@@ -14,6 +14,14 @@ struct STUDENT_DATA
 
 int main(void)
 {
+#ifdef PRE_RELEASE
+    cout << "Running PRE-RELEASE version" << endl;
+    ifstream inputFile("StudentData_Emails.txt");
+#else
+    cout << "Running STANDARD version" << endl;
+    ifstream inputFile("StudentData.txt");
+#endif
+
     ifstream inputFile("StudentData.txt");
     if (!inputFile.is_open())
     {
@@ -49,17 +57,17 @@ int main(void)
     inputFile.close();
 
     // Test: display all students stored in the vector
-    #ifdef _DEBUG
+#ifdef _DEBUG
 
-        for (const STUDENT_DATA& student : students)
-        {
-            cout << "First Name: " << student.firstName
-                << ", Last Name: " << student.lastName << endl;
-        }
+    for (const STUDENT_DATA& student : students)
+    {
+        cout << "First Name: " << student.firstName
+            << ", Last Name: " << student.lastName << endl;
+    }
 
-        cout << "Total students: " << students.size() << endl;
+    cout << "Total students: " << students.size() << endl;
 
-    #endif
+#endif
 
     return 0;
 }
