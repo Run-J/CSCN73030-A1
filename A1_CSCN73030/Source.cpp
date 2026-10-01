@@ -49,13 +49,17 @@ int main(void)
     inputFile.close();
 
     // Test: display all students stored in the vector
-    for (const STUDENT_DATA& student : students)
-    {
-        cout << "First Name: " << student.firstName
-            << ", Last Name: " << student.lastName << endl;
-    }
+    #ifdef _DEBUG
 
-    cout << "Total students: " << students.size() << endl;
+        for (const STUDENT_DATA& student : students)
+        {
+            cout << "First Name: " << student.firstName
+                << ", Last Name: " << student.lastName << endl;
+        }
+
+        cout << "Total students: " << students.size() << endl;
+
+    #endif
 
     return 0;
 }
